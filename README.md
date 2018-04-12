@@ -41,6 +41,7 @@ GetLogger().LogInfo(...)
 
 扩展方式：
 1. 设计`LogData`
+
 `LogData`必须集成`BaseLogData`，处理共同的日志字段，并扩展自己的字段，以下有一个扩展的例子
 
 ```go
@@ -53,6 +54,7 @@ GetLogger().LogInfo(...)
     }
 ```
 这个结构扩展了四个新字段。
+
 2. 针对`LogData`设计`Log*()`方法
 为`MLog`类新增方法。
 
