@@ -2,7 +2,7 @@ package loglib
 
 import (
 	"fmt"
-	"context"
+	"github.com/astaxie/beego/context"
 )
 
 type APIRequestLogData struct {
