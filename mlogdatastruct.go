@@ -13,6 +13,7 @@ type BaseLogData struct {
 	Source string // 日志打印点
 	Tag    string // DB ES SYS API SNOWFLAK CURL
 	Level  int    //Error Info Debug
+	BaseTime string //日志打印时间
 }
 
 func (self *BaseLogData) level() int {

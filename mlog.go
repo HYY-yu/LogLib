@@ -8,6 +8,7 @@ import (
 	"os"
 	"runtime"
 	"strconv"
+	"time"
 )
 
 // 三个Log级别 DEBUG INFO ERROR
@@ -62,13 +63,13 @@ func InitLogger(logConfig ...LogConfig) {
 	var logger *log.Logger
 
 	if config.LogTo == ConsoleLogs {
-		logger = log.New(os.Stdout, "", log.LstdFlags)
+		logger = log.New(os.Stdout, "", 0)
 	} else {
 		files, err := os.OpenFile(config.LogPath, os.O_CREATE|os.O_APPEND|os.O_RDWR, 0777)
 		if err != nil {
 			panic(fmt.Errorf("LogPath 有误: %v", err))
 		}
-		logger = log.New(files, "", log.LstdFlags)
+		logger = log.New(files, "", 0)
 	}
 
 	defaultLogger = &MLog{
@@ -104,13 +105,18 @@ func getCallerFile() string {
 	}
 }
 
+func getTime() string {
+	return time.Now().Format("2006-01-02 15:04:05")
+}
+
 //记录Debug(Debug等级)
 func (self *MLog) LogDebug(format string, v ...interface{}) {
 	baseLogData := &BaseLogData{
-		Tip:    "LogDebug",
-		Source: getCallerFile(),
-		Tag:    "API",
-		Level:  LevelDebug,
+		Tip:      "LogDebug",
+		Source:   getCallerFile(),
+		Tag:      "API",
+		BaseTime: getTime(),
+		Level:    LevelDebug,
 	}
 
 	info := fmt.Sprintf(format, v...)
