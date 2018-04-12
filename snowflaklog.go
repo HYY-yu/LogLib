@@ -21,6 +21,7 @@ func (self *MLog) LogSnowflakRequest(uniqueLogFlag string, uri string, auth stri
 	baseLogData := &BaseLogData{
 		Tip:    "SnowFlakRequest",
 		Source: getCallerFile(),
+		BaseTime: getTime(),
 		Tag:    "SNOWFLAK",
 		Level:  LevelDebug,
 	}
@@ -38,6 +39,7 @@ func (self *MLog) LogSnowflakResponse(uniqueLogFlag string, newId string, status
 	baseLogData := &BaseLogData{
 		Tip:    "SnowFlakResponse",
 		Source: getCallerFile(),
+		BaseTime: getTime(),
 		Tag:    "SNOWFLAK",
 		Level:  LevelDebug,
 	}

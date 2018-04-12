@@ -15,6 +15,7 @@ func (self *MLog) Println(values ...interface{}) {
 	baseLogData := &BaseLogData{
 		Tip:    level,
 		Tag:    "DB",
+		BaseTime: getTime(),
 		Source: fmt.Sprintf("%v", values[1]),
 	}
 

@@ -24,6 +24,7 @@ func (self *MLog) LogOtherCurlRequest(uniqueLogFlag string, description string, 
 		Tip:    "CurlRequest",
 		Source: getCallerFile(),
 		Tag:    "CURL",
+		BaseTime: getTime(),
 		Level:  LevelDebug,
 	}
 	requestData := &CurlRequestLogData{
@@ -42,6 +43,7 @@ func (self *MLog) LogOtherCurlResponse(uniqueLogFlag string, description string,
 	baseLogData := &BaseLogData{
 		Tip:    "CurlResponse",
 		Source: getCallerFile(),
+		BaseTime: getTime(),
 		Tag:    "CURL",
 		Level:  LevelDebug,
 	}

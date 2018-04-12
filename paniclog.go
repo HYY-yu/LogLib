@@ -17,6 +17,7 @@ func (self *MLog) LogPanicForServer(err error, stack []string, ctx *context.Cont
 		Tip:    "Panic",
 		Source: "",
 		Tag:    "SYS",
+		BaseTime: getTime(),
 		Level:  LevelError,
 	}
 

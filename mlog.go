@@ -134,6 +134,7 @@ func (self *MLog) LogInfo(format string, v ...interface{}) {
 		Tip:    "LogInfo",
 		Source: getCallerFile(),
 		Tag:    "API",
+		BaseTime: getTime(),
 		Level:  LevelInfo,
 	}
 
@@ -152,6 +153,7 @@ func (self *MLog) LogErr(err error, descriptions ...string) {
 		Tip:    "LogErr",
 		Source: getCallerFile(),
 		Tag:    "API",
+		BaseTime: getTime(),
 		Level:  LevelError,
 	}
 

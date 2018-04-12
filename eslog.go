@@ -13,6 +13,7 @@ func (self *MLog) Printf(format string, v ...interface{}) {
 		Tip:    "ElasticSearch",
 		Source: getCallerFile(),
 		Tag:    "ES",
+		BaseTime: getTime(),
 		Level:  LevelError,
 	}
 

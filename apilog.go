@@ -33,6 +33,7 @@ func (self *MLog) LogRequest(u *context.Context, uniqueLogFlag string) {
 		Tip:    "APIRequest",
 		Source: getCallerFile(),
 		Tag:    "API",
+		BaseTime: getTime(),
 		Level:  LevelInfo,
 	}
 
@@ -54,6 +55,7 @@ func (self *MLog) LogResponse(status int, resNo int, resMsg string, apiTime stri
 	baseLogData := &BaseLogData{
 		Tip:    "APIResponse",
 		Source: getCallerFile(),
+		BaseTime: getTime(),
 		Tag:    "API",
 		Level:  LevelInfo,
 	}
