@@ -42,6 +42,7 @@ GetLogger().LogInfo(...)
 扩展方式：
 1. 设计`LogData`
 `LogData`必须集成`BaseLogData`，处理共同的日志字段，并扩展自己的字段，以下有一个扩展的例子
+
 ```go
     type CurlResponseLogData struct {
     	*BaseLogData
@@ -54,6 +55,7 @@ GetLogger().LogInfo(...)
 这个结构扩展了四个新字段。
 2. 针对`LogData`设计`Log*()`方法
 为`MLog`类新增方法。
+
 ```go
 //other curl response(Debug等级)
 func (self *MLog) LogOtherCurlResponse(uniqueLogFlag string, description string, body string, status string) {
@@ -74,6 +76,7 @@ func (self *MLog) LogOtherCurlResponse(uniqueLogFlag string, description string,
 }
 ```
 把数据填充到你设计好的`LogData`中去，调用`writeMsg()`打印即可。
+
 #### 3. 数据示例
 
 ```
