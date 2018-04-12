@@ -20,6 +20,7 @@ type APIResponseLogData struct {
 	StatusCode  int
 	ResponseNo  int
 	ResponseMsg string
+	Duration    string
 
 	ResponseFlag string
 }
@@ -49,7 +50,7 @@ func (self *MLog) LogRequest(u *context.Context, uniqueLogFlag string) {
 }
 
 //记录返回(Info等级)
-func (self *MLog) LogResponse(status int, resNo int, resMsg string, uniqueLogFlag string) {
+func (self *MLog) LogResponse(status int, resNo int, resMsg string, apiTime string, uniqueLogFlag string) {
 	baseLogData := &BaseLogData{
 		Tip:    "APIResponse",
 		Source: getCallerFile(),
@@ -61,6 +62,7 @@ func (self *MLog) LogResponse(status int, resNo int, resMsg string, uniqueLogFla
 		StatusCode:   status,
 		ResponseNo:   resNo,
 		ResponseMsg:  resMsg,
+		Duration:     apiTime,
 		ResponseFlag: uniqueLogFlag,
 	}
 	apiLogData.BaseLogData = baseLogData
