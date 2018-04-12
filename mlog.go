@@ -40,15 +40,15 @@ type MLog struct {
 }
 
 var (
-	once          sync.Once
 	defaultLogger *MLog
 )
 
+func init() {
+	InitLogger()
+}
+
 //打Logger请使用GetLogger()方法。
 func GetLogger() *MLog {
-	once.Do(func() {
-		InitLogger()
-	})
 	return defaultLogger
 }
 
